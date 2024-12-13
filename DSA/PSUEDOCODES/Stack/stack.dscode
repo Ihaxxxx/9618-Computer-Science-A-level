@@ -1,0 +1,43 @@
+// FIRST IN LAST OUT FILO
+//GLOBAL VARIABLE
+CONSTANT Max <- 4
+DECLARE MyData : ARRAY[0:Max] OF INTEGER
+DECLARE TopOfStack : INTEGER
+
+///////
+
+/// CREATE STACK 
+PROCEDURE CreateStack()
+    DECLARE Index : INTEGER       // looping thrrough variable  
+    TopOfStack <- -1
+    FOR Index = 0 TO Max STEP 
+        MyData[Index] <- ""      // initializing the Array 
+    NEXT Index
+ENDPROCEDURE
+
+
+// PUSH ITEM 
+
+FUNCTION PUSH (NewItem:STRING) RETURN BOOLEAN
+    IF TopOfStack = Max THEN                   //Checking if the stack is full or no by comparing to its lenght 
+            OUTPUT "STACK IS FULL"
+            RETURN FALSE
+        ELSE
+            TopOfStack <- TopOfStack + 1            // incrementing the pointer to place the data at that position
+            MyData[TopOfStack] <- NewItem           // inserting the data
+            OUTPUT "STACK IS UPDTED"
+            RETURN TRUE
+    ENDIF
+END
+
+// POP ITEM
+
+
+FUNCTION POP() RETURN STRING
+    IF TopOfStack = -1 THEN                          // if the stack is empty TOS will be equal to - 1 
+            RETURN "EMPTY"
+        ELSE
+            TopOfStack <- TopOfStack - 1            // decremenring the pointer as the data is being removed
+            RETURN MyData[TopOfStack + 1]           // Returning the data which was removed
+    ENDIF
+END    

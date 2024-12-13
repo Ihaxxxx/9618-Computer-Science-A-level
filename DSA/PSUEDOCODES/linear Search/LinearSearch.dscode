@@ -1,0 +1,13 @@
+DECLARE MyList ARRAY OF [1,10] INTEGER
+DECLARE Index , Value : INTEGER
+
+FUNCTION FindItem (Value : INTEGER)  RETURN BOOLEAN
+    FOR Index = 1 TO LENGHT(MyList) 
+        IF MyList[Index] = Value  THEN
+            RETURN True
+        ENDIF
+    NEXT Index
+    RETURN False
+ENDFOR
+
+

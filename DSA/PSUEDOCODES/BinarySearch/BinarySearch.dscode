@@ -1,0 +1,27 @@
+
+DECLARE MyList ARRAY OF [1,10] INTEGER
+
+
+
+PROCEDURE BinarySearch(Num : INTEGER)
+DECLARE Top,Bottom,Middle  : INTEGER
+DECLARE Found : BOOLEAN
+Found <- False
+Top <- 1
+Bottom <- LENGHT(MyList)
+Middle <- INT((Top+Bottom)/2)
+REPEAT
+    IF Num = MyList[Middle] THEN
+        Found <- True
+        OUTPUT Middle
+    ELSEIF Num > MyList[Middle] THEN
+        Top <- Middle + 1
+    ELSEIF Num < MyList[Middle] THEN
+        Bottom <- Middle - 1    
+    ENDIF
+UNTIL Found OR Top > Bottom OR Bottom < Top
+
+
+
+
+

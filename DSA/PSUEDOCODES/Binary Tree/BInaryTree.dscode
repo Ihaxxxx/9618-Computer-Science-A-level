@@ -1,0 +1,72 @@
+// Global Variables
+CONSTANT NullPointer <- 0
+TYPE Tree
+    DECLARE LeftPointer : INTEGER
+    DECLARE RightPointer : INTEGER
+    DECLARE Data : CHAR
+ENDTYPE
+
+DECLARE RootPointer,FreePointer : INTEGER
+DECLARE MyTree : ARRAY[1:7] OF Tree
+
+
+// Initialise a tree
+PROCEDURE CreateTree()
+    DECLARE Index : INTEGER
+    RootPointer <- NullPointer
+    FreePointer <- 2
+    FOR Index = 1 TO 6 
+        MyTree[Index].RightPointer <- Index + 1
+    NEXT Index
+    MyTree[7].RightPointer <- NullPointer
+ENDPROCEDURE
+
+// Add an item in tree
+PROCEDURE AddItem(NewItem : CHAR)
+    DECLARE CurrentPointer : INTEGER
+    DECLARE Found,turnRight : BOOLEAN
+    IF FreePointer = NullPointer THEN
+        OUTPUT "Tree is full"
+        ELSE
+            Temp <- FreePointer
+            FreePointer <- MyTree[Temp].RightPointer
+            MyTree[Temp].Data <- NewItem
+            MyTree[Temp].LeftPointer <- NullPointer
+            MyTree[Temp].RightPointer <- NullPointer
+            IF RootPointer = NullPointer THEN
+                RootPointer <- Temp
+            ELSE
+                CurrentPointer <- RootPointer
+                WHILE CurrentPointer <> NullPointer
+                    PreviousPointer <- CurrentPointer
+                    IF NewItem > MyTree[CurrentPointer].Data THEN
+                        turnRight <- True
+                        CurrentPointer <- MyTree[CurrentPointer].RightPointer
+                    ELSE
+                        turnRight <- False
+                        CurrentPointer <- MyTree[CurrentPointer].LeftPointer
+                ENDWHILE
+                IF turnRight = True THEN
+                    MyTree[PreviousPointer].RightPointer <- Temp
+                ELSE
+                    MyTree[PreviousPointer].LeftPointer <- Temp
+    ENDIF                
+END
+
+// Search Item
+FUNCTION SearchItem(SearchItem : CHAR) RETURN INTEGER
+    DECLARE CurrentPointer : INTEGER
+    DECLARE Found : BOOLEAN
+    Found <- False
+    CurrentPointer <- RootPointer
+    WHILE NOT Found AND CurrentPointer <> NullPointer
+        IF SearchItem = MyTree[CurrentPointer].Data THEN
+            Found <- True
+            ELSEIF SearchItem > MyTree[CurrentPointer] THEN
+                CurrentPointer <- MyTree[CurrentPointer].RightPointer
+            ELSE
+                CurrentPointer <- MyTree[CurrentPointer].LeftPointer    
+        ENDIF
+    ENDWHILE 
+    RETURN CurrentPointer
+END       

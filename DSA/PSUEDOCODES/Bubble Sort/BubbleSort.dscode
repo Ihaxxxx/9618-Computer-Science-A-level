@@ -1,0 +1,21 @@
+DECLARE myList : ARRAY[0:8] OF INTEGER
+DECLARE upperBound , LowerBound , index , temp , top :INTEGER
+DECLARE swap : BOOLEAN
+
+
+upperBound <- 8
+LowerBound <- 0
+top <- upperBound
+
+REPEAT
+    FOR index = LowerBound TO top-1 STEP 
+        swap <- False
+        IF myList[index] > myList[index+1] THEN
+            temp <- myList[index]
+            myList[index] <- myList[index+1]
+            myList[index+1] <- temp
+            swap <- True
+        ENDIF
+    NEXT index
+    top <- top - 1
+UNTIL (NOT swap) OR (top = 0)

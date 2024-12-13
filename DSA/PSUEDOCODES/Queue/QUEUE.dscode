@@ -1,0 +1,58 @@
+// GLOBAL VARIABLES
+CONSTANT Max <- 4
+DECLARE MyData : ARRAY [0:Max] OF INTEGER
+DECLARE Head,Tail :INTEGER
+
+// Initialize a Queue[]
+
+PROCEDURE CreateQueue ()
+    DECLARE Index : INTEGER  
+    Head <- -1                                                // initializing the pointers
+    Tail <- -1 
+    FOR Index = 0 TO Max            
+        MyData[Index] <- ""                                   // initializing the pointer
+    NEXT Index
+END PROCEDURE
+
+// ADD an item into the Queue
+
+
+FUNCTION EnQueue (NewItem) RETURN BOOLEAN
+    IF ((Head = 0 AND Tail = Max) OR (Head=Tail+1)) THEN     // if head and tail pointer+1 is both equal to each other it means that its a circular queue   
+        OUTPUT "QUEUE IS FULL"                               // is head = 0 and tail = max it means that the queue is full but not circularly    
+        RETURN FALSE
+        ELSEIF (Head = -1 AND Tail = -1) THEN                // checking if the queue is empty or no   
+            Head <- 0                                        // if its empty initialize both the value to the first data position    
+            Tail <- 0
+        ELSEIF Tail = Max THEN                               // if tail is equal to max it means that the queue is full from the top 
+            Tail <- 0                                        // to make the queue circular we will pu tail into the first position of the Array
+        ELSE
+        Tail <- Tail + 1                                     // incrementing the tail pointer to the next free available space    
+        ENDIF
+    MyData[Tail] <- NewItem                                  // Inserting the value into the array   
+    OUTPUT "Queue Updated"  
+    RETURN TRUE
+    ENDIF
+END
+
+
+// Remove an item from the queue
+FUNCTION Dequeue ()
+    DECLARE Value : STRING
+    IF (Head = -1 AND Tail = -1) THEN                       // if head and tail pointer are both -1 it shows that tha queue is empty with no data 
+        RETURN "EMPTY"
+    ELSE 
+        Value <- MyData[Head]                               // putting the value in a variable which has to be removed from the queue
+        IF Head = Tail THEN                                 // if head and tail is both equal it means theres only one item in array
+            Head <- -1
+            Tail <- -1
+        ELSEIF Head = Max THEN                              // if head = max it means head pointer is at the top of the array 
+            Head <- 0                                       // to make the queue circular we will give it first value of the array index    
+        ELSE
+            Head <- Head + 1                                // if the queue is not circular we will just increment the value of head
+        ENDIF
+        RETURN Value
+    ENDIF       
+END FUNCTION
+
+

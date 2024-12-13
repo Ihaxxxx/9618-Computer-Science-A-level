@@ -1,0 +1,16 @@
+DECLARE NumberOfItem , Pointer , CurrentItem , ItemToBeInserted :INTEGER
+DECLARE MyList ARRAY OF [1,5] INTEGER
+
+
+
+NumberOfItem <- 5
+FOR Pointer = 2 TO NumberOfItem STEP 
+    ItemToBeInserted = MyList[Pointer]
+    CurrentItem = Pointer - 1
+    WHILE (MyList[CurrentItem]>ItemToBeInserted) AND (CurrentItem > 0)
+        MyList[CurrentItem + 1] = MyList[CurrentItem]
+        CurrentItem = CurrentItem - 1
+    ENDWHILE
+    MyList[CurrentItem + 1] = ItemToBeInserted
+NEXT Pointer
+ENDFOR  
