@@ -19,3 +19,36 @@ REPEAT
     NEXT index
     top <- top - 1
 UNTIL (NOT swap) OR (top = 0)
+
+
+REPEAT
+    swap <- true
+    FOR index = LowerBound TO top-1 STEP 
+        IF myList[index] > myList[index+1] THEN
+            temp <- myList[index]
+            myList[index] <- myList[index+1]
+            myList[index+1] <- temp
+            swap <- False
+        ENDIF
+    NEXT index
+    top <- top - 1
+UNTIL swap
+
+
+// Efficient one
+
+Outer <- LENGHT(List) - 1
+REPEAT
+    Inner <- 0
+    swap <- False
+    REPEAT
+        IF List[Inner] > List[Inner + 1] THEN
+            temp <- List[Inner]
+            List[Inner] <- List[Inner+1]
+            List[Inner+1] <- temp
+            swap <- True
+        ENDIF
+        Inner <- Inner + 1
+    UNTIL Inner = Outer - 1
+    Outer <- Outer - 1
+UNTIL condition

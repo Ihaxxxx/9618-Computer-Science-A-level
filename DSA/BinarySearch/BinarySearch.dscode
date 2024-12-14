@@ -7,20 +7,20 @@ PROCEDURE BinarySearch(Num : INTEGER)
 DECLARE Top,Bottom,Middle  : INTEGER
 DECLARE Found : BOOLEAN
 Found <- False
-Top <- 1
-Bottom <- LENGHT(MyList)
-Middle <- INT((Top+Bottom)/2)
+Top <- 1                                                    // Top index of the array can be 1 or 0
+Bottom <- LENGHT(MyList)                                    // Bottom index of the array from where we have to search
+Middle <- INT((Top+Bottom)/2)                               // Middle index of the array 
 REPEAT
-    IF Num = MyList[Middle] THEN
-        Found <- True
+    IF Num = MyList[Middle] THEN                            // checkiong if the search Item is found on the middle position 
+        Found <- True   
         OUTPUT Middle
-    ELSEIF Num > MyList[Middle] THEN
+    ELSEIF Num > MyList[Middle] THEN                        // If value at the mid location is greater then num we will increment the top pointer                
         Top <- Middle + 1
     ELSEIF Num < MyList[Middle] THEN
-        Bottom <- Middle - 1    
+        Bottom <- Middle - 1                                // If value at the mid location is lesser then num we will decrement the bottom pointer
     ENDIF
-UNTIL Found OR Top > Bottom OR Bottom < Top
-
+UNTIL Found OR Top > Bottom OR Bottom < Top                 // if found is true we have found the item and exit the loop if top is greater then bottom
+                                                            // or bottom is lesser then top it means we havent found the item
 
 
 
