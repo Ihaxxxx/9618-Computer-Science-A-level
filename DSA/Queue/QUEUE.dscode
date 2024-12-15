@@ -25,7 +25,7 @@ FUNCTION EnQueue (NewItem) RETURN BOOLEAN
             Head <- 0                                        // if its empty initialize both the value to the first data position    
             Tail <- 0
         ELSEIF Tail = Max THEN                               // if tail is equal to max it means that the queue is full from the top 
-            Tail <- 0                                        // to make the queue circular we will pu tail into the first position of the Array
+            Tail <- 0                                        // to make the queue circular we will put tail into the first position of the Array
         ELSE
         Tail <- Tail + 1                                     // incrementing the tail pointer to the next free available space    
         ENDIF

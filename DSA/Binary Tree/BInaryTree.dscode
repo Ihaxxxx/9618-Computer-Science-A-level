@@ -14,7 +14,7 @@ DECLARE MyTree : ARRAY[1:7] OF Tree
 PROCEDURE CreateTree()
     DECLARE Index : INTEGER
     RootPointer <- NullPointer
-    FreePointer <- 2
+    FreePointer <- 1
     FOR Index = 1 TO 6 
         MyTree[Index].RightPointer <- Index + 1
     NEXT Index
