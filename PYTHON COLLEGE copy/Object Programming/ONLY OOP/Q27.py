@@ -7,14 +7,14 @@ class Vehicle :
       self.__MaxSpeed = MaxSpeed
       self.__IncreaseAmount = IncreaseAmount
       self.__CurrentSpeed = 0
-      self.__HorizontalPostion = 0
+      self.__HorizontalPosition  = 0
 
 
     def SetCurrentSpeed(self,speed):
       self.__CurrentSpeed = speed
 
     def SetHorizontalPosition(self,position):
-      self.__HorizontalPostion = position
+      self.__HorizontalPosition  = position
 
     def GetCurrentSpeed(self):
          return self.__CurrentSpeed
@@ -23,14 +23,18 @@ class Vehicle :
          return self.__IncreaseAmount
     
     def GetHorizontalPostion(self):
-         return self.__HorizontalPostion
+         return self.__HorizontalPosition 
     
     def GetMaxSpeed(self):
          return self.__MaxSpeed
     
     def IncreaseSpeed(self):
-        self.__CurrentSpeed += self.__IncreaseAmount
-        self.__HorizontalPostion += self.__CurrentSpeed
+        if self.__CurrentSpeed + self.__IncreaseAmount  <= self.__MaxSpeed:
+          self.__CurrentSpeed += self.__IncreaseAmount
+        else:
+            self.__CurrentSpeed = self.__MaxSpeed
+        self.__HorizontalPosition += self.__CurrentSpeed
+
 
 
 
@@ -43,25 +47,44 @@ class Helicopter(Vehicle):
         self.__MaxHeight = maxHeight
         self.__VerticalPosition = 0
 
-    def GetVerticalPostion(self):
+    def GetVerticalPosition(self):
         return self.__VerticalPosition     
    
     def IncreaseSpeed(self):
           
-      if self.__VerticalPosition + self.__VerticalChange < self.__MaxHeight  :
-          self.__VerticalPosition += self.__VerticalChange    
+      if self.GetCurrentSpeed() + self.GetIncreaseAmount() <= self.GetMaxSpeed()  :
+          newSpeed = self.GetCurrentSpeed() + self.GetIncreaseAmount()    
       else:
-           print("The vertical Position cannot exceed the max height")   
-        
+          newSpeed = self.GetMaxSpeed()   
+      
+      self.SetCurrentSpeed(newSpeed)
+      if self.__VerticalPosition + self.__VerticalChange <= self.__MaxHeight:
+          self.__VerticalPosition += self.__VerticalChange
+      else:
+          self.__VerticalPosition = self.__MaxHeight
+      self.SetHorizontalPosition(self.GetHorizontalPostion()+self.GetCurrentSpeed())    
+
     
 
-# def OutputData(vehicle):
+def OutputVehicleDetails(vehicle):
+    if isinstance(vehicle, Helicopter):
+        print(f"Helicopter Details:")
+        print(f"  Horizontal Position: {vehicle.GetHorizontalPostion()}")
+        print(f"  Vertical Position: {vehicle.GetVerticalPosition()}")
+        print(f"  Current Speed: {vehicle.GetCurrentSpeed()}")
+    else:
+        print(f"Vehicle Details:")
+        print(f"  Horizontal Position: {vehicle.GetHorizontalPostion()}")
+        print(f"  Current Speed: {vehicle.GetCurrentSpeed()}")
+
      
 car = Vehicle("Tiger",100,20)
 helicopter  = Helicopter("Lion",350,40,3,100)
 
-print(helicopter.__dict__)
-helicopter.IncreaseSpeed()
-helicopter.IncreaseSpeed()
+car.IncreaseSpeed()
+car.IncreaseSpeed()
+OutputVehicleDetails(car)
 
-print(helicopter.__dict__)
+helicopter.IncreaseSpeed()
+helicopter.IncreaseSpeed()
+OutputVehicleDetails(helicopter)
