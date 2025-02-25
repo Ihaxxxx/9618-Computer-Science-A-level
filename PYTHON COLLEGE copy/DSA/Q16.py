@@ -28,7 +28,7 @@ def IterativeOutput(start):
  global HeadPointer,Queue,Total
  Total += Queue[start]
  while start !=  0 :
-    return IterativeOutput(start-1)
+    return IterativeOutput(start-1) 
  return Total 
 
 
