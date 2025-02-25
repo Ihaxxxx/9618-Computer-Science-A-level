@@ -37,12 +37,33 @@ def OutputNodes(array,startPointer):
     while array[startPointer].nextNode != -1:
       return OutputNodes(array,array[startPointer].nextNode)
 
-def addNode(linkedList,data,startPointer,emptylist):
- global emptyList
- linkedList[emptyList].data = data
- linkedList[emptyList].nextNode = -1
- #  updates the emptyList Pointer
- emptyList = linkedList[emptyList].nextNode
+def addNode(linkedList,startPointer,emptylist):
+    if emptylist != -1 :
+        data = int(input("Enter a new number : "))
+        linkedList[emptylist].data = data
+        temp = emptylist
+        
+        currentPointer = startPointer
+        while currentPointer != -1:
+            previouspointer = currentPointer
+            currentPointer = linkedList[previouspointer].nextNode
+        
+        linkedList[previouspointer].nextNode = emptylist
+        emptylist = linkedList[emptyList].nextNode            
+        linkedList[temp].nextNode = -1
+        return True
+    else:
+        return False
+        
  
 
+
+
+OutputNodes(LinkedList,startPointer)      
+x = addNode(LinkedList,startPointer,emptyList)
+if x:
+  print("Item is added")
+else:
+  print("Linked list is full")
+  
 OutputNodes(LinkedList,startPointer)      
