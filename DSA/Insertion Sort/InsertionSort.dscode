@@ -13,4 +13,4 @@ FOR Pointer = 2 TO NumberOfItem STEP
     ENDWHILE
     MyList[CurrentItem + 1] = ItemToBeInserted
 NEXT Pointer
-ENDFOR  
+ENDFOR

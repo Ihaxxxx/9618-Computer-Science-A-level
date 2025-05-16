@@ -25,3 +25,13 @@ UNTIL Found OR Top > Bottom OR Bottom < Top                 // if found is true 
 
 
 
+PROCEDURE BinarySearch(arr, target, low, high)
+    IF low > high
+        Return -1  // Target not found
+    mid ← (low + high) / 2
+    IF arr[mid] == target
+        RETURN mid
+    ELSEIF arr[mid] > target
+        RETURN BinarySearch(arr, target, low, mid - 1)
+    ELSE
+        RETURN BinarySearch(arr, target, mid + 1, high)

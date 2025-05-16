@@ -30,12 +30,14 @@ PROCEDURE AddItem(NewItem : CHAR)
         ELSE
             Temp <- FreePointer
             FreePointer <- MyTree[Temp].RightPointer
-            MyTree[Temp].Data <- NewItem
+            // adding data to the current free pointer 
+            MyTree[Temp].Data <- NewItem  
             MyTree[Temp].LeftPointer <- NullPointer
             MyTree[Temp].RightPointer <- NullPointer
-            IF RootPointer = NullPointer THEN
-                RootPointer <- Temp
+            IF RootPointer = NullPointer THEN  // if its the first data make fp and rp same
+                RootPointer <- Temp     
             ELSE
+            // Traversing thorugh the list 
                 CurrentPointer <- RootPointer
                 WHILE CurrentPointer <> NullPointer
                     PreviousPointer <- CurrentPointer
