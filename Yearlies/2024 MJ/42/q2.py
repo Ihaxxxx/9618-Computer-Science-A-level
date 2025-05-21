@@ -7,13 +7,13 @@ class Node :
         self.__RightPointer = -1
 
     def GetLeft(self):
-        return(self.__data)    
+        return self.__data    
     
     def GetRight(self):    
-        return(self.__LeftPointer)
+        return self.__LeftPointer
     
     def GetData(self):  
-        return(self.__RightPointer)  
+        return self.__RightPointer
     
     def SetLeft(self,value):
         self.__LeftPointer = value
@@ -34,7 +34,7 @@ class TreeClass:
     def InsertNode(self,NewNode):
         if self.__FirstNode == -1 :
             self.__FirstNode = 0
-            self.__Tree[self.__NumberNodes] = NewNode
+            self.__Tree[self.__NumberNodes].SetData(NewNode)
             self.__NumberNodes += 1
         else:
             self.__Tree[self.__NumberNodes] = NewNode
@@ -54,7 +54,7 @@ class TreeClass:
 
     def OutputTree(self):
         print("Left Pointer - "+ "Data" + " - Right Pointer")
-        for item in self.Tree :
+        for item in self.__Tree[:self.__NumberNodes] :
             print(f"{item.GetLeft()} - {item.GetData()} - {item.GetRight()}" )
 
 
