@@ -36,4 +36,4 @@ def StoreItems():
             Enqueue(UserInput)
     print(f"The amount of valid inputs are {count}")        
             
-StoreItems()    
+StoreItems()   
