@@ -13,8 +13,6 @@ LinkedList[19][0] = -1
 LinkedList[19][1] = -1
 
 
-print(LinkedList)
-
 
 def InsertData():
     global LinkedList,FirstEmpty,FirstNode
@@ -45,8 +43,29 @@ def OutputLinkedList() :
 
 
 def RemoveData(item) :
-    
+    empytList = 0
+    global FirstNode,LinkedList,FirstEmpty
+    currentPointer = FirstNode
+    previousPointer = -1
+    found = False
+    while currentPointer != -1 and not found:
+        if LinkedList[currentPointer][0] == item:
+            found = True
+            if previousPointer == -1 :
+                FirstNode = LinkedList[currentPointer][1]
+            else:
+                LinkedList[previousPointer][1] = LinkedList[currentPointer][1]
+
+            LinkedList[currentPointer][1] = FirstEmpty
+            FirstEmpty = currentPointer
+        else:
+            previousPointer = currentPointer
+            currentPointer = LinkedList[currentPointer][1]                        
+
+                
 
 
 InsertData()
+RemoveData(5)
+print("After")
 OutputLinkedList()
