@@ -1,0 +1,23 @@
+PROCEDURE MakeNewFile(oldFileName , newFileName , statusVal)
+
+OPEN FILE oldFileName FOR READ
+OPEN FILE newFileName FOR WRITE
+
+OldDataCount <- 0
+NewDataCount <- 0
+
+WHILE NOT EOF(oldFileName) 
+    OldDataCount <- OldDataCount + 1 
+    READFILE oldFileName , name
+    READFILE oldFileName , address
+    READFILE oldFileName , status
+    IF statusVal <> status THEN
+        WRITE FILE newFileName , name
+        WRITE FILE newFileName , address
+        WRITE FILE newFileName , status
+        NewDataCount <- NewDataCount + 1
+    ENDIF
+ENDWHILE 
+
+OUTPUT NewDataCount
+OUTPUT OldDataCount

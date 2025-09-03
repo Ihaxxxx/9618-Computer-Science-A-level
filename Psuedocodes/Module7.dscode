@@ -1,0 +1,41 @@
+
+//  Q7 a
+FUNCTION Generate ()
+
+// DECLARE KARDENA
+
+
+    pass <- ""
+    FOR outer = 1 TO 3 STEP 1
+    section <- ""
+        FOR inner = 1 TO 4 STEP 1
+            REPEAT
+                ToCheck <- RandomChar()
+                Flag <- Exist(section,ToCheck)
+                IF Flag == FALSE THEN
+                    section <- section + ToCheck
+                ENDIF
+            UNTIL NOT Flag
+        NEXT inner
+        pass <- section + '-' 
+    NEXT outer
+    RETURN pass
+END
+
+
+// Q7 b 
+
+FUNCTION AddPassword (domain , password)
+    Pass <- FindPassword(domain)
+    IF pass == '' THEN
+        FOR index = 1 TO 500 STEP 1
+            IF Secret[index,1] == '' THEN
+                Secret[index,1] <- domain
+                Secret[index,2] <- Encrypt(password)
+                RETURN TRUE
+            ENDIF
+        NEXT index
+        ENDFOR
+    ELSE
+        RETURN FALSE
+END

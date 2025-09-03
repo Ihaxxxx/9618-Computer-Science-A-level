@@ -1,0 +1,27 @@
+FUNCTION IgnoreWord(word : STRING)
+    FOR index = 1 TO 10 
+        IF IgnoreList[index] == word THEN
+            RETURN True
+        ENDIF
+    NEXT index
+    ENDFOR
+    RETURN False
+END FUNCTION
+
+FNString <- "hot and cold"
+initial <- ""
+
+PROCEDURE GetInitials()
+    wordNumber <- 1
+    WHILE GetStart(wordNumber) <> -1
+
+        StartIndex <- GetStart(wordNumber)
+        word <- GetWord(StartIndex)
+
+        IF IgnoreWord(word) = False THEN
+            initial <- initial + LEFT(word,1)            
+        ENDIF
+
+        index <- index + 1
+    ENDWHILE
+    OUTPUT initial

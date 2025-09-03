@@ -1,0 +1,22 @@
+OUTPUT "Enter user details"
+INPUT userDetails
+
+userId = STR_TO_NUM(LEFT(userDetails,4))
+
+OPEN FILE Employee.txt FOR READ 
+OPEN FILE NewEmployee.txt FOR WRITE 
+
+READ FILE Employee.txt , value
+
+REPEAT
+
+    fileUserId <- STR_TO_NUM(LEFT(value))
+    IF userId < fileUserId   THEN
+        WRITE FILE NewEmployee.txt , value
+    ELSE
+        WRITE FILE NewEmployee.txt , userDetails
+    ENDIF
+
+    READ FILE Employee.txt , value
+
+UNTIL EOF(Employee.txt)
