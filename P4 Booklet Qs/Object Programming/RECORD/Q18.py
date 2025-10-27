@@ -1,7 +1,6 @@
 # DECALRE ArrayNodes : ARRAY [0,19] OF INTEGER
 # DECLARE RootPointer,FreeNode : INTEGER
 
-
 FreeNode = 0
 RootPointer = -1
 ArrayNodes = [[-1,0,-1] for index in range(20)]
@@ -63,8 +62,12 @@ for i in range(10):
 
 def InOrder(ArrayNodes, RootNode):
  if ArrayNodes[RootNode][0] != -1:
-    InOrder(ArrayNodes, ArrayNodes[RootNode][0])
+
+   InOrder(ArrayNodes, ArrayNodes[RootNode][0])
+
  print(str(ArrayNodes[RootNode][1]))
+
  if ArrayNodes[RootNode][2] != -1:
     InOrder(ArrayNodes, ArrayNodes[RootNode][2]) 
+
 InOrder(ArrayNodes,RootPointer)

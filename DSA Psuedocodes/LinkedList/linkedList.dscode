@@ -56,9 +56,25 @@ PROCEDURE AddItem():
                 ENDIF
             UNTIL Found = True OR CurrentPointer = NullPointer
             // If the item is largest 
-            IF CurrentPointer = NullPointer THEN
-                
+            IF Found = False THEN
+                List[PreviousPointer].NextPointer <- FreePointer
+                List[FreePointer].NextPointer <- NullPointer
+                FreePointer <- Temp
             ENDIF
 
 
+index <- 1
+sum <- 0
+count <- 0
+Stop <- False
+REPEAT
+    IF Loyalty[index,1] == 99999 THEN
+        Stop <- True
+    ELSEIF Loyalty[index,2] >= 11 THEN
+        OUTPUT Loyalty[index,1]
+        ELSE 
+            sum <- sum + Loyalty[index,2] 
+            count <- count + 1
+UNTIL found == True OR index = 1001
 
+avg <- sum + count

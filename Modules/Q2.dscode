@@ -22,6 +22,6 @@ PROCEDURE GetInitials()
             initial <- initial + LEFT(word,1)            
         ENDIF
 
-        index <- index + 1
+        wordNumber <- wordNumber + 1
     ENDWHILE
     OUTPUT initial
