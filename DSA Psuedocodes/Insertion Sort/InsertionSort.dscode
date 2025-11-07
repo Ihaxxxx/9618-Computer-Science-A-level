@@ -14,3 +14,5 @@ FOR Pointer = 2 TO NumberOfItem STEP
     MyList[CurrentItem + 1] = ItemToBeInserted
 NEXT Pointer
 ENDFOR
+
+arr = [7, 2, 9, 1, 5]

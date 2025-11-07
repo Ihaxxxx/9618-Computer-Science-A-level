@@ -22,9 +22,6 @@ REPEAT
 UNTIL Found OR Top > Bottom OR Bottom < Top                 // if found is true we have found the item and exit the loop if top is greater then bottom
                                                             // or bottom is lesser then top it means we havent found the item
 
-
-
-
 PROCEDURE BinarySearch(arr, target, low, high)
     IF low > high
         Return -1  // Target not found

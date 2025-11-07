@@ -63,18 +63,28 @@ PROCEDURE AddItem():
             ENDIF
 
 
-index <- 1
-sum <- 0
-count <- 0
-Stop <- False
-REPEAT
-    IF Loyalty[index,1] == 99999 THEN
-        Stop <- True
-    ELSEIF Loyalty[index,2] >= 11 THEN
-        OUTPUT Loyalty[index,1]
-        ELSE 
-            sum <- sum + Loyalty[index,2] 
-            count <- count + 1
-UNTIL found == True OR index = 1001
 
-avg <- sum + count
+// DELETE NODE
+PROCEDURE DeleteItem(item : STRING)
+    Found <- True
+    CurrentPointer <- StartPointer
+
+    WHILE CurrentPointer <> NullPointer AND Found = False
+    IF item = MyList[CurrentPointer].Node AND Found = False  THEN
+        Found <- False
+    ELSE
+        PreviousPointer <- CurrentPointer
+        CurrentPointer <- MyList[CurrentPointer].NextPointer
+    ENDWHILE
+
+    IF CurrentPointer <> NullPointer THEN
+        IF CurrentPointer = StartPointer THEN
+            StartPointer <- MyList[CurrentPointer].NextPointer
+        ELSE
+            MyList[PreviousPointer].NextPointer <- MyList[CurrentPointer].NextPointer    
+        ENDIF
+
+        MyList[CurrentPointer].NextPointer <- FreePointer
+        FreePointer <- CurrentPointer
+    ENDIF
+END    
