@@ -4,15 +4,17 @@ DECLARE MyList ARRAY OF [1,5] INTEGER
 
 
 NumberOfItem <- 5
-FOR Pointer = 2 TO NumberOfItem STEP 
-    ItemToBeInserted = MyList[Pointer]
-    CurrentItem = Pointer - 1
+FOR Pointer = 2 TO NumberOfItem  
+    ItemToBeInserted <- MyList[Pointer]
+    CurrentItem <- Pointer - 1
     WHILE (MyList[CurrentItem]>ItemToBeInserted) AND (CurrentItem > 0)
-        MyList[CurrentItem + 1] = MyList[CurrentItem]
+        MyList[CurrentItem + 1] <- MyList[CurrentItem]
         CurrentItem = CurrentItem - 1
     ENDWHILE
-    MyList[CurrentItem + 1] = ItemToBeInserted
+    MyList[CurrentItem + 1] <- ItemToBeInserted
 NEXT Pointer
 ENDFOR
 
 arr = [7, 2, 9, 1, 5]
+
+

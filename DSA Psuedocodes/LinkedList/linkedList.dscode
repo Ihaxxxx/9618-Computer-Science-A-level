@@ -66,11 +66,11 @@ PROCEDURE AddItem():
 
 // DELETE NODE
 PROCEDURE DeleteItem(item : STRING)
-    Found <- True
+    Found <- False
     CurrentPointer <- StartPointer
 
     WHILE CurrentPointer <> NullPointer AND Found = False
-    IF item = MyList[CurrentPointer].Node AND Found = False  THEN
+    IF item = MyList[CurrentPointer].Node  THEN
         Found <- False
     ELSE
         PreviousPointer <- CurrentPointer
@@ -78,6 +78,7 @@ PROCEDURE DeleteItem(item : STRING)
     ENDWHILE
 
     IF CurrentPointer <> NullPointer THEN
+
         IF CurrentPointer = StartPointer THEN
             StartPointer <- MyList[CurrentPointer].NextPointer
         ELSE

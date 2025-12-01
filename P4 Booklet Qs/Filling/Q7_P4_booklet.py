@@ -2,8 +2,11 @@
 
 DataArray = []
 
-myfile = open("/Users/apple/Documents/A2/COMPUTER SCIENCE/PYTHON COLLEGE/Filling/Text Files - P4/IntegerData.txt","r")
+myfile = open("P4 Booklet Qs/Filling/Text Files - P4/IntegerData.txt","r")
 
+# fileLine = myfile.readlines()
+# for item in fileLine:
+#    print(item.strip())
 
 def ReadFile():
     global DataArray
@@ -13,7 +16,7 @@ def ReadFile():
     myfile.close()
     print(DataArray) 
 
-ReadFile()
+# ReadFile()
 
 def FindValue():
     global DataArray
@@ -25,7 +28,7 @@ def FindValue():
         if num == item:
           count += 1 
     print("The Number of times the value ",num,"appear is",count)  
-FindValue()
+# FindValue()
 
 
 def BubbleSort(): 
@@ -38,4 +41,5 @@ def BubbleSort():
           DataArray[j+1] = temp
     print(DataArray)    
    
-BubbleSort()   
+# BubbleSort()   
+# ReadFile()
