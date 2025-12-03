@@ -71,7 +71,7 @@ PROCEDURE DeleteItem(item : STRING)
 
     WHILE CurrentPointer <> NullPointer AND Found = False
     IF item = MyList[CurrentPointer].Node  THEN
-        Found <- False
+        Found <- True
     ELSE
         PreviousPointer <- CurrentPointer
         CurrentPointer <- MyList[CurrentPointer].NextPointer
