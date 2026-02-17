@@ -64,7 +64,7 @@ FUNCTION SearchItem(SearchItem : CHAR) RETURN INTEGER
     WHILE NOT Found AND CurrentPointer <> NullPointer
         IF SearchItem = MyTree[CurrentPointer].Data THEN
             Found <- True
-            ELSEIF SearchItem > MyTree[CurrentPointer] THEN
+            ELSEIF SearchItem > MyTree[CurrentPointer].Data THEN
                 CurrentPointer <- MyTree[CurrentPointer].RightPointer
             ELSE
                 CurrentPointer <- MyTree[CurrentPointer].LeftPointer    
@@ -72,3 +72,29 @@ FUNCTION SearchItem(SearchItem : CHAR) RETURN INTEGER
     ENDWHILE 
     RETURN CurrentPointer
 END       
+
+PROCEDURE InOrder(RootNode)
+
+    IF ArrayNodes[RootNode].LeftPointer <> -1 THEN
+        CALL InOrder(ArrayNodes[RootNode].LeftPointer)
+    END IF
+
+    OUTPUT ArrayNodes[RootNode].Data
+
+    IF ArrayNodes[RootNode].RightPointer <> -1 THEN
+        CALL InOrder(ArrayNodes[RootNode].RightPointer)
+    END IF
+
+END PROCEDURE
+
+
+
+PROCEDURE DisplayData(CurrentPointer : INTEGER)
+    IF CurrentPointer = 0 THEN
+        RETURN 
+    ENDIF
+
+    CALL DisplayData(myList[CurrentPointer].LeftPointer) 
+    OUTPUT myList[CurrentPointer].Data
+    CALL DisplayData(myList[CurrentPointer].RightPointer)
+ENDPROCEDURE    
