@@ -89,3 +89,40 @@ PROCEDURE DeleteItem(item : STRING)
         FreePointer <- CurrentPointer
     ENDIF
 END    
+
+
+
+
+
+DECLARE Num1 , Num2 , Num3 , count : INTEGER
+DECLARE AVG : REAL
+
+count <- 1
+
+FOR index <- 1 TO 600 STEP 3
+    Num1 <- Array1[i]
+    Num2 <- Array1[i+1]
+    Num3 <- Array1[i+2]
+
+    AVG <- (Num1 + Num2 + Num3) / 3
+
+    Array2[count] <- AVG
+
+    count <- count + 1
+    
+NEXT index
+ENDFOR
+
+
+
+INPUT weight 
+INPUT max 
+INPUT min
+
+IF weight > min + 2 AND weight < max - 2  THEN
+    OUTPUT "ACCEPTED"
+ELSEIF (weight >= max - 2 AND weight <= max + 2) OR (weight >= min - 2 AND weight <= min + 2) THEN
+    OUTPUT "RECHECK"
+ELSE
+    OUTPUT "REJECT"    
+    

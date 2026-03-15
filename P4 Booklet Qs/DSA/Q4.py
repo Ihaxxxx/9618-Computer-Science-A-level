@@ -22,6 +22,7 @@ for i in range(ArrayLength):
  for j in range(ArrayLength):
    x += str(NumberArray[i][j]) + " "
  print(x)  
+ 
 
 def BinarySearch(SearchArray,Lower,Upper,SearchValue):
   if Upper >= Lower:

@@ -61,7 +61,7 @@ def addNode(linkedList,startPointer,emptylist):
 
 OutputNodes(LinkedList,startPointer)      
 x = addNode(LinkedList,startPointer,emptyList)
-if x:
+if x == True:
   print("Item is added")
 else:
   print("Linked list is full")

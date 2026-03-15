@@ -11,7 +11,7 @@ class Vehicle :
 
 
     def SetCurrentSpeed(self,speed):
-      self.__CurrentSpeed = speed
+      self.__CurrentSpeed = speed 
 
     def SetHorizontalPosition(self,position):
       self.__HorizontalPosition  = position
@@ -58,10 +58,12 @@ class Helicopter(Vehicle):
           newSpeed = self.GetMaxSpeed()   
       
       self.SetCurrentSpeed(newSpeed)
+
       if self.__VerticalPosition + self.__VerticalChange <= self.__MaxHeight:
           self.__VerticalPosition += self.__VerticalChange
       else:
           self.__VerticalPosition = self.__MaxHeight
+
       self.SetHorizontalPosition(self.GetHorizontalPostion()+self.GetCurrentSpeed())    
 
     

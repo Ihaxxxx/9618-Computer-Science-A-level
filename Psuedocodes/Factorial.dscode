@@ -27,3 +27,23 @@ FUNCTION Recursice ()
 BEGIN
     
 END
+
+
+
+// Hour <- 00
+OPEN FN FOR READ
+READFILE FN , Info
+Hour <- LEFT(Info,2)
+Count <- 0
+WHILE NOT EOF(FN)
+
+    IF Hour = LEFT(Info,2)
+        count <- count + 1
+    ELSE
+        OUTPUT "Hour " + Hour + " Total " + count
+        Hour <- LEFT(Info,2)
+        count <- 1
+    
+    READFILE FN , Info
+    
+ENDWHILE

@@ -8,7 +8,7 @@ PlayerNameArray = [""]*10
 
 def ReadHighScore():
  count = 0    
- myFile = open("/Users/apple/Documents/A2/COMPUTER SCIENCE/PYTHON COLLEGE/Filling/Text Files - P4/HighScore.txt","r")
+ myFile = open("P4 Booklet Qs/Filling/Text Files - P4/HighScore.txt","r")
  PlayerName = myFile.readline().strip()
  PlayerScore = myFile.readline().strip()
 #  print(PlayerScore,PlayerName)
@@ -33,8 +33,14 @@ while (len(newPlayerName) != 3) or (newPlayerScore > 100000 or newPlayerScore < 
     newPlayerName = input("Enter a player name of 3 characters :")
     newPlayerScore = int(input("Enter player score between 1 and 100000 inclusive :"))
 
+newTopTenArrayScores = [0] * 10
+newTopTenArrayName = [""] * 10 
+
+
 def NewTopTen(name,score):
- print(PlayerScoreArray,PlayerNameArray)
+#  print(PlayerScoreArray,PlayerNameArray)
+ global newTopTenArrayName
+ global newTopTenArrayScores
  PlayerNameArray.append(name)
  PlayerScoreArray.append(score)
  for i in range(len(PlayerScoreArray)-1):
@@ -48,19 +54,26 @@ def NewTopTen(name,score):
             
             PlayerScoreArray[j+1] = tempScore
             PlayerNameArray[j+1] = tempName
-            
- del PlayerNameArray[-1]
- del PlayerScoreArray[-1]
+ 
+ for i in range(10):
+   newTopTenArrayName[i] = PlayerNameArray[i]
+   newTopTenArrayScores[i] = PlayerScoreArray[i]
+
  print(PlayerScoreArray,PlayerNameArray)   
 
 
 def WriteTopTen():
- myFile = open("/Users/apple/Documents/A2/COMPUTER SCIENCE/PYTHON COLLEGE/Filling/NewHighScore.txt","w")
- for name,score in zip(PlayerNameArray,PlayerScoreArray):
-    myFile.write(name + "\n")
-    myFile.write(str(score) + "\n")
+ myFile = open("P4 Booklet Qs/Filling/NewHighScore.txt","w")
+ global newTopTenArrayName
+ global newTopTenArrayScores
+#  for name,score in zip(PlayerNameArray,PlayerScoreArray):
+ for index in range(10):
+        myFile.write(newTopTenArrayName[index] + "\n")
+        myFile.write(str(newTopTenArrayScores[index]) + "\n")
 
-ReadHighScore()    
-NewTopTen(newPlayerName,newPlayerScore)
-WriteTopTen()
+# ReadHighScore()    
+# NewTopTen(newPlayerName,newPlayerScore)
+# WriteTopTen()
 # OutputHighScore()
+
+print(len(PlayerNameArray))

@@ -21,3 +21,23 @@ ENDWHILE
 
 OUTPUT NewDataCount
 OUTPUT OldDataCount
+
+
+
+
+
+FUNCTION RandomChar ()
+
+    range <- INT(RAND(3))
+    IF range = 0 THEN
+        x <- INT(RAND(26)) + 97
+        value = CHR(x) 
+        RETURN value    
+    ELSEIF range = 1 THEN
+        x <- INT(RAND(26)) + 97
+        value = UCASE(CHR(x))
+        RETURN value    
+    ELSEIF range = 2 THEN
+        x <- INT(RAND(10))
+        RETURN NUM_TO_STR(x)
+END

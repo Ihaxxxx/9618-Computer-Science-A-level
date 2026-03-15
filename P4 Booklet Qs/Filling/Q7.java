@@ -4,15 +4,23 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class Q6 {
-    public static Integer[] DataArray = new Integer[25] ; 
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in) ;
-        Integer Counter = 0 ;
-        Integer userInputIInteger ;
+public class Q7 {
+    public static Integer[] DataArray = new Integer[100] ; 
+    static Scanner scanner = new Scanner(System.in);
 
-        String filePath = "P4 Booklet Qs/Filling/Text Files - P4/Data.txt" ;
+    public static void main(String[] args) {
+
         
+        ReadFile();
+        // for (Integer lineString : DataArray) {
+        //     System.out.println(lineString);
+        // }
+        System.out.printf("The number 61 is found %d times" , FindValues(61));
+    }
+
+    public static void ReadFile(){
+        String filePath = "P4 Booklet Qs/Filling/Text Files - P4/IntegerData.txt" ;
+        Integer Counter = 0 ;
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))){
             String line ;
             while ((line = reader.readLine()) != null) {
@@ -24,15 +32,10 @@ public class Q6 {
         }catch (IOException e){
             System.out.println("Something Went Wrong");
         }
+    }
 
-        // for (Integer valInteger : DataArray) {
-        //     System.out.println(valInteger);
-        // }
-
-        // PrintArray();
-
-        // System.out.println(LinearSearch(12));
-
+    public static Integer FindValues(Integer ValueToFInd){
+        Integer userInputIInteger ;
         System.out.print("Enter a number between 0 and 100 inclusive : ");
         userInputIInteger = scanner.nextInt();
 
@@ -41,22 +44,6 @@ public class Q6 {
             System.out.print("Enter a number between 0 and 100 inclusive : ");
             userInputIInteger = scanner.nextInt();
         }
-    
-        System.out.printf("The number %d is found %d times " , userInputIInteger , LinearSearch(userInputIInteger));
-
-
-        scanner.close();
-    }
-
-    public static void PrintArray(){
-        String data = "" ;
-        for (Integer integer : DataArray) {
-            data = data + Integer.toString(integer) + " " ;
-        }
-        System.out.println(data);
-    }
-
-    public static Integer LinearSearch(Integer ValueToFInd){
         Integer TimesFound = 0 ;
         for (Integer integer : DataArray) {
             if (integer == ValueToFInd) {

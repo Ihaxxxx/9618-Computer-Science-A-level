@@ -17,7 +17,6 @@ def Enqueu(data):
  if (HeadPointer == 0 and TailPointer == 49) or (HeadPointer == TailPointer + 1) :
    print("Queue is full")
    return
- 
  if HeadPointer == -1 :
    HeadPointer = 0
    TailPointer = 0

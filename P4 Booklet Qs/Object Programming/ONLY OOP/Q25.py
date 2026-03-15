@@ -24,6 +24,8 @@ class Hand(Card):
 
     def GetCard(self,index):
      return self.__cards[index]
+    # def GetCard(self):
+    #  return self.__cards
 
 
 
@@ -39,8 +41,8 @@ for item in color:
     count += 1
 
 
-Player1 = Hand((CardList[0],CardList[1],CardList[2],CardList[3],CardList[10]))
-Player2 = Hand((CardList[11],CardList[12],CardList[13],CardList[14],CardList[5]))
+Player1 = Hand([CardList[0],CardList[1],CardList[2],CardList[3],CardList[10]])
+Player2 = Hand([CardList[11],CardList[12],CardList[13],CardList[14],CardList[5]])
 
 def CalculateValue(hand):
    score = 0
@@ -59,6 +61,7 @@ def CalculateValue(hand):
 Player1Score = CalculateValue(Player1)
 Player2Score = CalculateValue(Player2)
 
+print(Player1Score)
 if Player1Score > Player2Score:
   print("Player 1 Has won")
 elif Player1Score < Player2Score:

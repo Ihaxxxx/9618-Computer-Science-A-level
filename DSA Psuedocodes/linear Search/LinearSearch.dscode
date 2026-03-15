@@ -11,3 +11,50 @@ FUNCTION FindItem (Value : INTEGER)  RETURN BOOLEAN
 ENDFOR
 
 
+// Inefficient
+
+DECLARE Alphabets ARRAY OF [1:24] STRING
+DECLARE Index : INTEGER
+DECLARE SearchValue : STRING
+DECLARE Found : BOOLEAN
+
+Found <- False
+
+OUTPUT "Enter an alphabet you have to search"
+INPUT SearchValue
+
+FOR Index = 1 TO 24 
+    IF Alphabets[Index] = SearchValue THEN
+        Found <- True
+    ENDIF    
+NEXT Index
+
+IF Found = True THEN
+    OUTPUT "Found"
+ELSE
+    OUTPUT "Not found"
+
+// Efficient 
+
+DECLARE Alphabets ARRAY OF [1:24] STRING
+DECLARE Index : INTEGER
+DECLARE SearchValue : STRING
+DECLARE Found : BOOLEAN
+
+Found <- False
+index <- 1
+
+OUTPUT "Enter an alphabet you have to search"
+INPUT SearchValue
+
+REPEAT
+    IF Alphabets[Index] = SearchValue THEN
+        Found <- True
+    ENDIF
+    index <- index + 1
+UNTIL Found = True OR index > 24
+
+IF Found = True THEN
+    OUTPUT "Found"
+ELSE
+    OUTPUT "Not found"

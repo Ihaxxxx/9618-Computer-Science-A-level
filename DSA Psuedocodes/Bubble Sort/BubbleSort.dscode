@@ -47,6 +47,24 @@ REPEAT
     top <- top - 1
 UNTIL swap
 
+PROCEDURE sort()
+ REPEAT
+     swap <- False
+     FOR index = LowerBound TO top - 1 
+         IF myList[index,1] > myList[index+1,1] THEN
+             temp <- myList[index,1]
+             myList[index , 1] <- myList[index+1 , 1]
+             myList[index+1 , 1] <- temp
+ 
+             temp <- myList[index,2]
+             myList[index , 2] <- myList[index+1 , 2]
+             myList[index+1 , 2] <- temp
+             swap <- True
+         ENDIF
+     NEXT index
+     top <- top - 1
+ UNTIL NOT swap 
+
 
 // Efficient one
 
