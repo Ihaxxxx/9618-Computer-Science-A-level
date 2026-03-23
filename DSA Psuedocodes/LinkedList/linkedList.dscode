@@ -27,20 +27,26 @@ PROCEDURE AddItem():
         OUTPUT "Linked list is full"
     ELSE
         Data = INPUT("Enter Item")
-        List[FreePointer].Node = Data 
-        IF StartPointer == NullPointer THEN   // if it is the first data
-            StartPointer <- FreePointer       // setting the starting location of the list
-            Temp <- list[FreePointer].NextPointer   // storing it cause we have to add this to the Free Pointer later
+        List[FreePointer].Node = Data
+
+        // if it is the first data
+        IF StartPointer == NullPointer THEN   
+            StartPointer <- FreePointer
+            Temp <- list[FreePointer].NextPointer
             list[FreePointer].NextPointer <- NullPointer
             FreePointer <- Temp
         ELSE
-            Temp <- list[FreePointer].NextPointer       // if it is the smallest data
-            IF Data < List[StartPointer].Node THEN      // comparing the data
-                List[FreePointer].NextPointer <- StartPointer  // changing the right pointer of the FP to the before start item
+
+            // if it is the smallest data
+            Temp <- list[FreePointer].NextPointer       
+            IF Data < List[StartPointer].Node THEN
+                List[FreePointer].NextPointer <- StartPointer
                 StartPointer <- FreePointer
                 FreePointer <- Temp
             ENDIF
-        ELSE                              // if middle data    
+        ELSE
+
+            // if middle data    
             PreviousPointer <- NullPointer
             CurrentPointer <- StartPointer
             Found <- False
@@ -55,6 +61,7 @@ PROCEDURE AddItem():
                     CurrentPointer <- List[CurrentPointer].NextPointer
                 ENDIF
             UNTIL Found = True OR CurrentPointer = NullPointer
+
             // If the item is largest 
             IF Found = False THEN
                 List[PreviousPointer].NextPointer <- FreePointer
@@ -89,6 +96,30 @@ PROCEDURE DeleteItem(item : STRING)
         FreePointer <- CurrentPointer
     ENDIF
 END    
+
+PROCEDURE SearchItem()
+
+    // Is linkedList Empty
+
+    IF StartPointer = NullPointer THEN
+        OUTPUT "Linked List is Empty"
+    ELSE
+        OUTPUT "Enter a Search Value"
+        INPUT SearchValue
+        CurrentPointer <- StartPointer
+        Found <- False
+        REPEAT 
+            IF SearchItem = MyList[CurrentPointer].Node THEN
+                OUTPUT "Data found at position ", CurrentPointer
+                Found <- True
+            ELSE
+                CurrentPointer <- MyList[CurrentPointer].NextPointer
+        UNTIL Found = True OR CurrentPointer = NullPointer
+
+        IF Found == False THEN
+            OUTPUT "Data not found"
+        ENDIF
+    ENDIF
 
 
 

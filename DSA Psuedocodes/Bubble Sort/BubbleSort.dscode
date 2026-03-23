@@ -83,3 +83,41 @@ REPEAT
     UNTIL Inner = Outer - 1
     Outer <- Outer - 1
 UNTIL not swap
+
+
+least Efficient
+DECLARE myList ARRAY [1:10] OF INTEGER
+maxLen = 10
+
+FOR Outer <- 1 TO maxLen - 1  
+    FOR Inner <- 1 TO maxLen - 1
+        IF List[Inner] > List[Inner + 1] THEN
+            temp <- List[Inner]
+            List[Inner] <- List[Inner + 1]
+            List[Inner + 1] <- temp
+        ENDIF
+    NEXT
+NEXT
+
+MOST Efficient
+DECLARE myList ARRAY [1:10] OF INTEGER
+
+Outer <- 10
+
+REPEAT
+    swap <- False
+    Inner <- 0
+
+    REPEAT
+        IF List[Inner] > List[Inner + 1] THEN
+            temp <- List[Inner]
+            List[Inner] <- List[Inner + 1]
+            List[Inner + 1] <- temp
+            swap <- True
+        ENDIF
+
+        Inner <- Inner + 1
+    UNTIL Inner = Outer - 1
+
+    Outer <- Outer - 1
+UNTIL NOT swap OR Outer = 1

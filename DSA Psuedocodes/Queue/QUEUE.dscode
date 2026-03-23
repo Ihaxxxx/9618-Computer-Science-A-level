@@ -56,3 +56,43 @@ FUNCTION Dequeue ()
 END FUNCTION
 
 
+
+
+
+
+// Another Version of Code
+
+DECLARE Queue ARRAY[1:10] OF INTEGER
+
+DECLARE rearPointer , frontPointer , queuefull , queueLen : INTEGER
+
+PROCEDURE Initialize()
+    frontPointer <- 1
+    endPointer <- 0
+    queuefull <- 10
+    queueLen <- 0
+
+PROCEDURE EnQueue(item)
+    IF queueLen < queuefull THEN
+        IF rearPointer < 10 THEN
+            rearPointer <- rearPointer + 1
+        ELSE
+            rearPointer <- 1
+        
+        queueLen <- queueLen + 1
+        queue[rearPointer] <- item
+    ELSE
+        OUTPUT "Queue is full"
+
+PROCEDURE DeQueue()
+    IF queueLen = 0 THEN
+        OUTPUT "Queue is Empty cannot Dequeue"
+    ELSE
+        Item <- queue[frontPointer]
+        IF frontPointer = 10
+            frontPointer <- 1
+        ELSE
+            frontPointer <- frontPointer + 1
+        queueLen <- queueLen - 1
+        OUTPUT Item
+

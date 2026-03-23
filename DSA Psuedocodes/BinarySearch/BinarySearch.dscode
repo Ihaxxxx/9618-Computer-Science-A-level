@@ -32,3 +32,16 @@ PROCEDURE BinarySearch(arr, target, low, high)
         RETURN BinarySearch(arr, target, low, mid - 1)
     ELSE
         RETURN BinarySearch(arr, target, mid + 1, high)
+
+
+
+PROCEDURE BinarySearch(arr, target, low, high)
+    IF low > high
+        RETURN -1 
+    mid ← INT((low + high) / 2)
+    IF arr[mid] == target
+        RETURN mid
+    ELSEIF arr[mid] > target
+        RETURN BinarySearch(arr, target, low, mid - 1)
+    ELSE
+        RETURN BinarySearch(arr, target, mid + 1, high)
